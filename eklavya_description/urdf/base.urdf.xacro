@@ -5,9 +5,9 @@
   <xacro:include filename="$(find eklavya_description)/urdf/parts/materials.urdf.xacro" />
   <xacro:include filename="$(find eklavya_description)/urdf/parts/wheel.urdf.xacro" />
   <xacro:include filename="$(find eklavya_description)/urdf/parts/parts.urdf.xacro" />
-<!--
+
   <xacro:include filename="$(find eklavya_description)/urdf/sensors/kinect.urdf.xacro" />
-  <xacro:include filename="$(find eklavya_description)/urdf/sensors/multicamera.urdf.xacro" />-->
+  <xacro:include filename="$(find eklavya_description)/urdf/sensors/multicamera.urdf.xacro" />
   <xacro:include filename="$(find eklavya_description)/urdf/sensors/imu.urdf.xacro" />
   <xacro:include filename="$(find eklavya_description)/urdf/sensors/gps.urdf.xacro" />
   <xacro:include filename="$(find eklavya_description)/urdf/sensors/sick_lms100_laser.urdf.xacro" />
@@ -211,6 +211,40 @@
  
 
     <sick_lms100_laser name="laser" parent="base_link_user_rail_part_lms100_support_part" laser_px="0.0" laser_py="0.0" laser_pz="0.026" laser_or="0" laser_op="0.0" laser_oy="0" />
- 
    </xacro:if>
+   
+    <xacro:if value="$(arg camera_enabled)">
+   <!-- FEI-modded vertical-camera rail -->
+    <eklavya_rail_mods parent="base_footprint" name="fei_cam_rail" mesh="tslot_300x20x20.dae"
+          colour="DarkGrey"
+          translateX="-0.15" translateY="0.0" translateZ="${0.151 + 0.245 + wheel_x_size/2 - base_z_origin_to_wheel_origin}" 
+          rotateX="0.0" rotateY="0.0" rotateZ="0.0" dimX="0.02" dimY="0.02" dimZ="0.3" />
+    <gazebo reference="base_footprint_fei_cam_rail_part">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <!-- FEI-modded 3D sensor cam_pz: 0.151 works well too, but must change rail -->
+    <sensor_kinect name="camera" parent="base_link" cam_px="-0.151" cam_py="0.0" cam_pz="${0.191 + 0.245 + wheel_x_size/2 - base_z_origin_to_wheel_origin}" cam_or="0.0" cam_op="0.0" cam_oy="0.0" />
+
+    <!-- FEI-modded vertical-stereo-camera rail -->
+    <eklavya_rail_mods parent="base_footprint" name="fei_stereo_rail" mesh="tslot_500x20x20.dae"
+          colour="DarkGrey"
+          translateX="-0.24" translateY="0.0" translateZ="${0.241 + 0.245 + wheel_x_size/2 - base_z_origin_to_wheel_origin}" 
+          rotateX="0.0" rotateY="0.0" rotateZ="0.0" dimX="0.02" dimY="0.02" dimZ="0.5" />
+    <gazebo reference="base_footprint_fei_stereo_rail_part">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <!-- FEI-modded multicamera sensor -->
+    <sensor_multicamera name="stereo_camera" parent="base_link" baseline="0.062" colour="Red" cam_px="-0.24" cam_py="0.0" cam_pz="${0.361 + 0.245 + wheel_x_size/2 - base_z_origin_to_wheel_origin}" cam_or="0.0" cam_op="0.0" cam_oy="0.0" />
+    <gazebo reference="stereo_camera_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="left_camera_frame">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="right_camera_frame">
+        <material>Gazebo/Black</material>
+    </gazebo>
+     </xacro:if>
 </robot>
