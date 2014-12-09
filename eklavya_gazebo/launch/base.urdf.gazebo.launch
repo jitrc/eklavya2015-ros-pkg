@@ -69,7 +69,7 @@ This program is a launch file for spawning the Eklavya 2015 robot model in Gazeb
      <param name="gps_used" value="false"/>
      <param name="imu_absolute" value="false"/>
      
-     <!--<remap from="odom" to="ground_truth/odom" />-->
+     <remap from="odom" to="ground_truth/odom" />
 	</node>
   <!--
   <node pkg="tf" type="static_transform_publisher" name="odom2world_broadcaster" args="0 0 0 0 0 0  /odom /world 10"/>

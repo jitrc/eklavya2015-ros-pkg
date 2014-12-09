@@ -144,17 +144,19 @@
       <torque>35</torque>	
     </plugin>
   </gazebo>
- <!--
+ 
   <gazebo>
-    <plugin name="eklavya_groundtruth_sim" filename="libgazebo_ros_p3d.so">
+   <plugin name='eklavya_groundtruth_sim' filename='libgazebo_ros_p3d.so'>
       <updateRate>100.0</updateRate>
-      <bodyName>base_footprint</bodyName>
       <topicName>ground_truth/odom</topicName>
-      <gaussianNoise>0.0</gaussianNoise>
+      <gaussianNoise>0.001</gaussianNoise>
       <frameName>world</frameName>
-    </plugin> 
-  </gazebo> -->
-  
+      <alwaysOn>true</alwaysOn>
+      <bodyName>base_footprint</bodyName>
+      <xyzOffset>0 0 0</xyzOffset>
+      <rpyOffset>0 0 0</rpyOffset>
+ </plugin>
+</gazebo>
   <xacro:if value="$(arg imu_enabled)">
     <sensor_imu parent="base_link" name="imu" colour="Blue" imu_px="0.192" imu_py="0.0" imu_pz="${0.01}" imu_or="0.0" imu_op="${-M_PI/2.0}" imu_oy="0.0" />
     <gazebo reference="imu_link">

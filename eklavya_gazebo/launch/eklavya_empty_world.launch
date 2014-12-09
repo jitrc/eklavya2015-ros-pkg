@@ -29,7 +29,8 @@ This program is a launch file for spawning the Eklavya 2015 robot model in Gazeb
 -->
 
 <launch>
-    <remap from="/eklavya/cmd_vel" to="/cmd_vel" />
+  <arg name="ns" value="/" />
+    <!--<remap from="/eklavya/cmd_vel" to="/cmd_vel" />-->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="use_sim_time" value="true"/>
             

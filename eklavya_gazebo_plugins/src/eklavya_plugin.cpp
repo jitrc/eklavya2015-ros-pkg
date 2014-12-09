@@ -143,7 +143,7 @@ void EklavyaPlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf )
 
   rosnode_ = new ros::NodeHandle( node_namespace_ );
 
-  cmd_vel_sub_ = rosnode_->subscribe("eklavya/cmd_vel", 1, &EklavyaPlugin::OnCmdVel, this );
+  cmd_vel_sub_ = rosnode_->subscribe("cmd_vel", 1, &EklavyaPlugin::OnCmdVel, this );
 
   odom_pub_ = rosnode_->advertise<nav_msgs::Odometry>("odom", 1);
 
