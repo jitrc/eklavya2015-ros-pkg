@@ -7,8 +7,8 @@
         <geometry>
           <heightmap>
             <uri>model://grass_igvc_lines_height/materials/textures/heightmap.png</uri>
-            <size>100 100 1</size>
-            <pos>0 0 -0.6</pos>
+            <size>38 38 3</size>
+            <pos>14.1106 -0.146449 0</pos>
           </heightmap>
         </geometry>
       </collision>
@@ -17,19 +17,19 @@
         <geometry>
           <heightmap>
             <texture>
-              <diffuse>file://media/materials/textures/dirt_diffusespecular.png</diffuse>
+              <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse><!--dirt_diffusespecular.png-->
               <normal>file://media/materials/textures/flat_normal.png</normal>
               <size>2.5</size>
             </texture>
             <texture>
-              <diffuse>file://media/materials/textures/grass_diffusespecular.png</diffuse><!--grass_lane.png-->
+              <diffuse>file://media/materials/textures/white.bmp</diffuse><!--grass_lane.png white.bmp grass_diffusespecular.png-->
               <normal>file://media/materials/textures/flat_normal.png</normal>
-              <size>2.5</size>
+              <size>0.5</size>
             </texture>
             <texture>
-              <diffuse>file://media/materials/textures/fungus_diffusespecular.png</diffuse>
+              <diffuse>file://media/materials/textures/grass_lane.png</diffuse><><!--fungus_diffusespecular.png-->
               <normal>file://media/materials/textures/flat_normal.png</normal>
-              <size>2.5</size>
+              <size>0.5</size>
             </texture>
             <blend>
               <min_height>0.48</min_height>
@@ -40,8 +40,8 @@
               <fade_dist>1</fade_dist>
             </blend>
             <uri>model://grass_igvc_lines_height/materials/textures/heightmap.png</uri>
-            <size>100 1000 10</size>
-            <pos>0 0 -0.6</pos>
+            <size>38 38 3</size>
+            <pos>14.1106 -0.146449 0</pos>
           </heightmap>
         </geometry>
       </visual>
