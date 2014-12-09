@@ -32,6 +32,7 @@ This program is a launch file for spawning the Eklavya 2015 robot model in Gazeb
     <arg name="gps_enabled" default="true"/>
     <arg name="imu_enabled" default="true"/>
     <arg name="front_laser" default="true"/>
+    <arg name="camera_enabled" default="true" />
     <arg name="pos_x" default="0.0"/>
     <arg name="pos_y" default="0.0"/>
     <arg name="pos_z" default="0.0"/>
@@ -44,6 +45,7 @@ This program is a launch file for spawning the Eklavya 2015 robot model in Gazeb
       <arg name="gps_enabled" value="$(arg gps_enabled)"/>
       <arg name="imu_enabled" value="$(arg imu_enabled)"/>
       <arg name="front_laser" value="$(arg front_laser)"/>
+      <arg name="camera_enabled" value="$(arg camera_enabled)"/>
     </include>
     <!-- Spawn robot in gazebo -->
     <node name="spawn_eklavya_model" pkg="gazebo_ros" type="spawn_model" 
@@ -57,7 +59,7 @@ This program is a launch file for spawning the Eklavya 2015 robot model in Gazeb
           
           
     <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf" output="screen">
-     <param name="output_frame" value="world"/>
+     <param name="output_frame" value="odom"/>
      <param name="freq" value="30.0"/>
      <param name="debug" value="true"/>
      <param name="sensor_timeout" value="1.0"/>
@@ -69,5 +71,8 @@ This program is a launch file for spawning the Eklavya 2015 robot model in Gazeb
      
      <!--<remap from="odom" to="ground_truth/odom" />-->
 	</node>
-    
+  <!--
+  <node pkg="tf" type="static_transform_publisher" name="odom2world_broadcaster" args="0 0 0 0 0 0  /odom /world 10"/>
+  <node pkg="tf" type="static_transform_publisher" name="odom2map_broadcaster" args="0 0 0 0 0 0  /odom /map 10"/>
+  -->
 </launch>
