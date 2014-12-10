@@ -20,7 +20,7 @@ then
 else
     echo auro_resources in ROS_PACKAGE_PATH is not set. Setting...	
     echo "
-export ROS_PACKAGE_PATH=$(dirname "$PWD")/auro_resources:"'$ROS_PACKAGE_PATH' >> ~/.bashrc
+export ROS_PACKAGE_PATH=$(dirname "$PWD")/src/eklavya2015-ros-pkg/eklavya_gazebo:"'$ROS_PACKAGE_PATH' >> ~/.bashrc
 	if grep -Fq "export ROS_PACKAGE_PATH=$(dirname "$PWD")/src/eklavya2015-ros-pkg/eklavya_gazebo" ~/.bashrc
 	then
     	echo Setting successful. Open a new terminal once install is done.
@@ -35,7 +35,7 @@ then
 else
     echo auro_resources in GAZEBO_RESOURCE_PATH is not set. Setting...	
     echo "
-export GAZEBO_RESOURCE_PATH=$(dirname "$PWD")/auro_resources:"'$GAZEBO_RESOURCE_PATH' >> ~/.bashrc
+export GAZEBO_RESOURCE_PATH=$(dirname "$PWD")/src/eklavya2015-ros-pkg/eklavya_gazebo:"'$GAZEBO_RESOURCE_PATH' >> ~/.bashrc
 	if grep -Fq "export GAZEBO_RESOURCE_PATH=$(dirname "$PWD")/src/eklavya2015-ros-pkg/eklavya_gazebo" ~/.bashrc
 	then
     	echo Setting successful. Open a new terminal once install is done.
